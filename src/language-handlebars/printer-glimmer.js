@@ -158,8 +158,8 @@ function print(path, options, print) {
       return [node.key, "=", print("value")];
 
     case "TextNode": {
-      if (path.parent.tag === "pre") {
-        return node.chars; // Don't format content in <pre>
+      if (path.parent.tag === "pre" || path.parent.tag === "style") {
+        return node.chars; // Don't format content in <pre>, or in <style> tags when there are CSS syntax errors
       }
 
       /* if `{{my-component}}` (or any text containing "{{")
